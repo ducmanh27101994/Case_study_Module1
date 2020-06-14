@@ -1,57 +1,11 @@
 let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 let score = 0;
-class Car {
-    constructor(x,y,width,height,color) {
-        this.x = x;
-        this.y = y;
-        this.height = height;
-        this.width = width;
-        this.color = color
-    }
-    getX() {
-        return this.x;
-    }
-    setX(x) {
-        this.x = x;
-    }
-    getY() {
-        return this.y;
-    }
-    setY(y){
-        this.y = y;
-    }
-    getWidth() {
-        return this.width;
-    }
-    setWidth(width) {
-        this.width = width;
-    }
-    getHeight() {
-        return this.height;
-    }
-    setHeight(height) {
-        this.height = height;
-    }
-    getColor() {
-        return this.color
-    }
-    setColor(color) {
-        this.color = color
-    }
-}
-
-let car = new Car(200,550,50,50,"red");
-let x = car.getX();
-let y = car.getY();
-let width = car.getWidth();
-let height = car.getHeight();
-let color = car.getColor();
 
 let speed = 10;
-let enemy = [];
+let enemys = [];
 for (let i = 0; i < 5; i++) {
-    enemy[i] = {
+    enemys[i] = {
         x: Math.random() * 500,
         y: i * 50,
         width: 50,
@@ -80,10 +34,10 @@ function moveCar(evt) {
 }
 
 
-function checkWin(car, enemy) {
+function checkWin(car, enemys) {
     for (let i = 0; i < 5; i++) {
-        if ((enemy[i].x > car.x && enemy[i].x < car.x + 50) || (enemy[i].x < car.x && enemy[i].x + 50 > car.x)) {
-            if ((enemy[i].y > car.y && enemy[i].y < car.y + 50) || (enemy[i].y < car.y && enemy[i].y + 50 > car.y)) {
+        if ((enemys[i].x > car.x && enemys[i].x < car.x + 50) || (enemys[i].x < car.x && enemys[i].x + 50 > car.x)) {
+            if ((enemys[i].y > car.y && enemys[i].y < car.y + 50) || (enemys[i].y < car.y && enemys[i].y + 50 > car.y)) {
                 return true;
             }
         }
@@ -104,13 +58,13 @@ function update() {
     }
     //Tạo ra enemy mới với tọa độ bất kỳ, và tốc độ tăng dần
     for (let i = 0; i < 5; i++) {
-        if (enemy[i].y >= 600) {
-            enemy[i].y = i * 50;
-            enemy[i].x = Math.random() * 500;
+        if (enemys[i].y >= 600) {
+            enemys[i].y = i * 50;
+            enemys[i].x = Math.random() * 500;
             score += 1
             speed += 0.3;
         } else {
-            enemy[i].y += speed;
+            enemys[i].y += speed;
         }
     }
 
@@ -119,10 +73,10 @@ function update() {
     drawRect(car.x, car.y, car.width, car.height, car.color);
 
     for (let i = 0; i < 5; i++) {
-        drawRect(enemy[i].x, enemy[i].y, enemy[i].width, enemy[i].height, enemy[i].color);
+        drawRect(enemys[i].x, enemys[i].y, enemys[i].width, enemys[i].height, enemys[i].color);
     }
 
-    if (checkWin(car, enemy)) {
+    if (checkWin(car, enemys)) {
         clearInterval(game); //Kết thúc game tại thời điểm xảy ra va chạm
         text1 = "GAME OVER"
         text2 = "Score: " + score;
