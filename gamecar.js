@@ -8,21 +8,29 @@ let car = {
     color: "red"
 };
 
-let enemy = {
-    x: Math.random()*500,
-    y: 50,
-    width: 50,
-    height: 50,
-    color: "white"
-};
+
+let speed = 10;
+let enemy = [];
+for (let i = 0; i < 5; i++) {
+    enemy[i] = {
+        x: Math.random() * 500,
+        y: 50,
+        width: 50,
+        height: 50,
+        color: "white"
+    };
+}
+
 
 function drawRect(x, y, width, height, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, width, height)
 }
 
-document.addEventListener("keydown",moveCar);
+
+document.addEventListener("keydown", moveCar);
 let move;
+
 function moveCar(evt) {
     let key = evt.keyCode;
     if (key === 37) {
@@ -33,11 +41,29 @@ function moveCar(evt) {
 }
 
 
-
 function update() {
     drawRect(car.x, car.y, car.width, car.height, car.color);
+
+    if (move === "LEFT" && car.x > 0) {
+        car.x = car.x - 25;
+        move = null;
+    } else if (move === "RIGHT" && car.x < 500) {
+        car.x = car.x + 25;
+        move = null;
+    }
+    //Tạo ra enemy mới với tọa độ bất kỳ, và tốc độ tăng dần
+    for (let i = 0; i < 5; i++) {
+        if (enemy[i].y >= 600) {
+            enemy[i].y = i * 50;
+            enemy[i].x = Math.random() * 500;
+            speed += 0.5;
+        } else {
+            enemy[i].y += speed;
+        }
+    }
 }
 
+
 function start() {
-    game = setInterval(update,100);
+    game = setInterval(update, 100);
 }
