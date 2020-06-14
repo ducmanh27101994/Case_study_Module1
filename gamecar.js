@@ -1,14 +1,52 @@
 let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 let score = 0;
-let car = {
-    x: 250,
-    y: 550,
-    width: 50,
-    height: 50,
-    color: "red"
-};
+class Car {
+    constructor(x,y,width,height,color) {
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.width = width;
+        this.color = color
+    }
+    getX() {
+        return this.x;
+    }
+    setX(x) {
+        this.x = x;
+    }
+    getY() {
+        return this.y;
+    }
+    setY(y){
+        this.y = y;
+    }
+    getWidth() {
+        return this.width;
+    }
+    setWidth(width) {
+        this.width = width;
+    }
+    getHeight() {
+        return this.height;
+    }
+    setHeight(height) {
+        this.height = height;
+    }
+    getColor() {
+        return this.color
+    }
+    setColor(color) {
+        this.color = color
+    }
+}
 
+let car = new Car(200,550,50,50,"red");
+let x = car.getX();
+let y = car.getY();
+let width = car.getWidth();
+let height = car.getHeight();
+let color = car.getColor();
 
 let speed = 10;
 let enemy = [];
@@ -85,20 +123,18 @@ function update() {
     }
 
     if (checkWin(car, enemy)) {
-        clearInterval(game); //Kết thúc game tại thời điểm xảy ra
+        clearInterval(game); //Kết thúc game tại thời điểm xảy ra va chạm
         text1 = "GAME OVER"
-        text2 = "score: " + score;
+        text2 = "Score: " + score;
         ctx.fillStyle = "while";
-        ctx.font = "45px Changa one";
-        ctx.fillText(text1, 150, 170);
-        ctx.fillText(text2, 200, 225);
-
+        ctx.font = "45px Roboto";
+        ctx.fillText(text1, 120, 170);
+        ctx.fillText(text2, 170, 225);
 
     }
-
 }
-
 
 function start() {
     game = setInterval(update, 100);
 }
+
