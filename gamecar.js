@@ -1,3 +1,5 @@
+let canvas = document.getElementById('myCanvas');
+let ctx = canvas.getContext('2d');
 let car = {
     x: 250,
     y: 550,
@@ -13,3 +15,8 @@ let enemy = {
     height: 50,
     color: "white"
 };
+
+function drawRect(x, y, width, height, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height)
+}
