@@ -14,7 +14,7 @@ let enemy = [];
 for (let i = 0; i < 5; i++) {
     enemy[i] = {
         x: Math.random() * 500,
-        y: 50,
+        y: i * 50,
         width: 50,
         height: 50,
         color: "white"
