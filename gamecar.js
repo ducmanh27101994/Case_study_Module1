@@ -1,6 +1,6 @@
 let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
-
+let score = 0;
 let car = {
     x: 250,
     y: 550,
@@ -42,6 +42,16 @@ function moveCar(evt) {
 }
 
 
+function checkWin(car,enemy) {
+    for (let i = 0; i < 5 ; i++) {
+        if ((enemy[i].x > car.x && car.x +50 > enemy[i]) || (enemy[i].x < car.x && enemy[i] + 50 > car.x)) {
+            if ((enemy[i].y > car.y && enemy[i] < car.y + 50) || (enemy[i].y < car.y && enemy[i] + 50 > car.y)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 
 function update() {
@@ -59,6 +69,7 @@ function update() {
         if (enemy[i].y >= 600) {
             enemy[i].y = i * 50;
             enemy[i].x = Math.random() * 500;
+            score += 1
             speed += 0.3;
         } else {
             enemy[i].y += speed;
