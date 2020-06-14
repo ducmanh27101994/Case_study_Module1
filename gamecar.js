@@ -1,5 +1,6 @@
 let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
+let score = 0;
 let car = {
     x: 250,
     y: 550,
@@ -24,7 +25,7 @@ for (let i = 0; i < 5; i++) {
 
 function drawRect(x, y, width, height, color) {
     ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height)
+    ctx.fillRect(x, y, width, height);
 }
 
 
@@ -39,6 +40,8 @@ function moveCar(evt) {
         move = "RIGHT";
     }
 }
+
+
 
 
 function update() {
@@ -56,10 +59,19 @@ function update() {
         if (enemy[i].y >= 600) {
             enemy[i].y = i * 50;
             enemy[i].x = Math.random() * 500;
+            score += 1;
             speed += 0.3;
         } else {
             enemy[i].y += speed;
         }
+    }
+
+    drawRect(0, 0, 500, 600, "black");
+
+    drawRect(car.x, car.y, car.width, car.height, car.color);
+
+    for (let i = 0; i < 5; i++) {
+        drawRect(enemy[i].x, enemy[i].y, enemy[i].width, enemy[i].height, enemy[i].color);
     }
 
 }
