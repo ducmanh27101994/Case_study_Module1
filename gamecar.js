@@ -1,6 +1,6 @@
 let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
-let score = 0;
+
 let car = {
     x: 250,
     y: 550,
@@ -59,7 +59,6 @@ function update() {
         if (enemy[i].y >= 600) {
             enemy[i].y = i * 50;
             enemy[i].x = Math.random() * 500;
-            score += 1;
             speed += 0.3;
         } else {
             enemy[i].y += speed;
