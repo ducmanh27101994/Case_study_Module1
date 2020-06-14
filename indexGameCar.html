@@ -9,6 +9,16 @@
             border: 2px solid #FFF;
             position: absolute;
         }
+
+        .button {
+            background-color: red;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            display: block;
+            padding: 15px 32px;
+            border: none;
+        }
     </style>
 
     <script src="gamecar.js"></script>
@@ -16,6 +26,6 @@
 <body>
 <canvas id="myCanvas" width="500px" height="600px"></canvas>
 
-<button id="startGame" onclick="start()" style="position: absolute; top:420px; left: 630px;">Start Game</button>
+<button class="button" id="startGame" onclick="start()" style="position: absolute; top:420px; left: 630px;">Start Game</button>
 </body>
 </html>
