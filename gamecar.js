@@ -56,11 +56,12 @@ function update() {
         if (enemy[i].y >= 600) {
             enemy[i].y = i * 50;
             enemy[i].x = Math.random() * 500;
-            speed += 0.5;
+            speed += 0.3;
         } else {
             enemy[i].y += speed;
         }
     }
+
 }
 
 
