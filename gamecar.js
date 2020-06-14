@@ -42,10 +42,10 @@ function moveCar(evt) {
 }
 
 
-function checkWin(car,enemy) {
-    for (let i = 0; i < 5 ; i++) {
-        if ((enemy[i].x > car.x && car.x +50 > enemy[i]) || (enemy[i].x < car.x && enemy[i] + 50 > car.x)) {
-            if ((enemy[i].y > car.y && enemy[i] < car.y + 50) || (enemy[i].y < car.y && enemy[i] + 50 > car.y)) {
+function checkWin(car, enemy) {
+    for (let i = 0; i < 5; i++) {
+        if ((enemy[i].x > car.x && enemy[i].x < car.x + 50) || (enemy[i].x < car.x && enemy[i].x + 50 > car.x)) {
+            if ((enemy[i].y > car.y && enemy[i].y < car.y + 50) || (enemy[i].y < car.y && enemy[i].y + 50 > car.y)) {
                 return true;
             }
         }
@@ -82,6 +82,18 @@ function update() {
 
     for (let i = 0; i < 5; i++) {
         drawRect(enemy[i].x, enemy[i].y, enemy[i].width, enemy[i].height, enemy[i].color);
+    }
+
+    if (checkWin(car, enemy)) {
+        clearInterval(game); //Kết thúc game tại thời điểm xảy ra
+        text1 = "GAME OVER"
+        text2 = "score: " + score;
+        ctx.fillStyle = "while";
+        ctx.font = "45px Changa one";
+        ctx.fillText(text1, 150, 170);
+        ctx.fillText(text2, 200, 225);
+
+
     }
 
 }
