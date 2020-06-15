@@ -1,15 +1,15 @@
 class Enemy {
     constructor(x,y,width,height) {
         this.x = Math.random() * 500;
-        this.y = y;
-        this.height = height;
-        this.width = width;
+        this.y = 50;
+        this.height = 50;
+        this.width = 50;
 
     }
     draw(){
         let ctx = canvas.getContext('2d');
         let img = new Image();
-        img.src = 'stone.png';
+        img.src = 'image/stone.png';
         ctx.drawImage(img,this.x,this.y,this.width,this.height);
     }
     getX() {
@@ -39,5 +39,8 @@ class Enemy {
 
 }
 
-let enemy = new Enemy();
+let enemy = new Enemy(Math.random() * 500,50,50,50);
 
+for (let i = 0; i < 5; i++) {
+    enemys.push(enemy)
+}

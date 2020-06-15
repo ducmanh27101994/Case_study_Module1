@@ -9,7 +9,7 @@ class Car {
     draw(){
         let ctx = canvas.getContext('2d');
         let img = new Image();
-        img.src = 'car2.png';
+        img.src = 'image/car2.png';
         ctx.drawImage(img,this.x,this.y,this.width,this.height);
     }
     getX() {
@@ -38,8 +38,5 @@ class Car {
     }
 }
 
+
 let car = new Car(200,500,50,100);
-let x = car.getX();
-let y = car.getY();
-let width = car.getWidth();
-let height = car.getHeight();

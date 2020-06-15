@@ -2,17 +2,9 @@ let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 let score = 0;
 
-let speed = 10;
+let speed = 6;
+
 let enemys = [];
-for (let i = 0; i < 5; i++) {
-    enemys[i] = {
-        x: Math.random() * 500,
-        y: i * 50,
-        width: 50,
-        height: 50,
-        color: "white"
-    };
-}
 
 
 function drawRect(x, y, width, height, color) {
@@ -33,7 +25,7 @@ function moveCar(evt) {
     }
 }
 
-function checkCrash(car,enemy) {
+function checkCrash(car, enemy) {
     if ((enemy.x > car.x && enemy.x < car.x + car.width) || (enemy.x < car.x && enemy.x + car.width > car.x)) {
         if ((enemy.y > car.y && enemy.y < car.y + 50) || (enemy.y < car.y && enemy.y + 50 > car.y)) {
             return true;
@@ -44,7 +36,7 @@ function checkCrash(car,enemy) {
 
 function checkWin(car, enemys) {
     for (let i = 0; i < enemys.length; i++) {
-        if(checkCrash(car,enemys[i])){
+        if (checkCrash(car, enemys[i])) {
             return true;
         }
     }
@@ -63,8 +55,8 @@ function update() {
         car.x = car.x + 25;
         move = null;
     }
-    //Tạo ra enemy mới với tọa độ bất kỳ, và tốc độ tăng dần
-    for (let i = 0; i < 5; i++) {
+
+    for (let i = 0; i < enemys.length; i++) {
         if (enemys[i].y >= 600) {
             enemys[i].y = i * 50;
             enemys[i].x = Math.random() * 500;
@@ -73,25 +65,21 @@ function update() {
         } else {
             enemys[i].y += speed;
         }
+        document.getElementById("score").innerHTML = "Score: " + score;
     }
 
     drawRect(0, 0, 500, 600, "#4e555b");
 
     car.draw();
 
-    for (let i = 0; i < 5; i++) {
-        drawRect(enemys[i].x, enemys[i].y, enemys[i].width, enemys[i].height, enemys[i].color);
+    for (let i = 0; i < enemys.length; i++) {
+        enemy.draw(enemys[i].x, enemys[i].y, enemys[i].width, enemys[i].height);
     }
 
     if (checkWin(car, enemys)) {
+        document.getElementById("gameOver").innerHTML = "GAME OVER";
+        document.getElementById("scoreEnd").innerHTML = "Score: " + score;
         clearInterval(game);
-        text1 = "GAME OVER"
-        text2 = "Score: " + score;
-        ctx.fillStyle = "while";
-        ctx.font = "45px Roboto";
-        ctx.fillText(text1, 120, 170);
-        ctx.fillText(text2, 170, 225);
-
     }
 }
 
