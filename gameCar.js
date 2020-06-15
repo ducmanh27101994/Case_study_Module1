@@ -2,7 +2,7 @@ let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 let score = 0;
 
-let speed = 6;
+let speed = 7;
 
 let enemys = [];
 
@@ -43,7 +43,6 @@ function checkWin(car, enemys) {
     return false;
 }
 
-
 function update() {
 
     car.draw();
@@ -58,7 +57,7 @@ function update() {
 
     for (let i = 0; i < enemys.length; i++) {
         if (enemys[i].y >= 600) {
-            enemys[i].y = i * 50;
+            enemys[i].y = i * 40;
             enemys[i].x = Math.random() * 500;
             score += 1
             speed += 0.3;
@@ -72,9 +71,7 @@ function update() {
 
     car.draw();
 
-    for (let i = 0; i < enemys.length; i++) {
-        enemy.draw(enemys[i].x, enemys[i].y, enemys[i].width, enemys[i].height);
-    }
+    enemy.draw()
 
     if (checkWin(car, enemys)) {
         document.getElementById("gameOver").innerHTML = "GAME OVER";
