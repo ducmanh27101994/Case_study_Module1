@@ -44,3 +44,4 @@ let enemy = new Enemy(Math.random() * 500,50,50,50);
 for (let i = 0; i < 5; i++) {
     enemys.push(enemy)
 }
+
