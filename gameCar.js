@@ -50,8 +50,8 @@ function update() {
 
     for (let i = 0; i < enemys.length; i++) {
         if (enemys[i].y >= 600) {
-            enemys[i].y = i * 40;
-            enemys[i].x = Math.random() * 500;
+            enemys[i].y = i * 50;
+            enemys[i].x = Math.random() * 450;
             score += 1
             speed += 0.3;
         } else {

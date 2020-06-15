@@ -14,3 +14,4 @@ class Background {
 }
 
 let backgroundImg = new Background(0,0,500,600)
+
