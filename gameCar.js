@@ -70,7 +70,13 @@ function update() {
         document.getElementById("gameOver").innerHTML = "GAME OVER";
         document.getElementById("scoreEnd").innerHTML = "Score: " + score;
         clearInterval(game);
+        document.getElementById("restartGame").innerHTML = `<button class="button" onclick="restart()" style="position: absolute; top:400px; left: 180px; z-index: 1">Restart</button>`
+
     }
+}
+
+function restart(){
+    location.reload();
 }
 
 function start() {
