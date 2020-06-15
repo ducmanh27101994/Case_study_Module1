@@ -2,7 +2,7 @@ let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 let score = 0;
 
-let speed = 10;
+let speed = 7;
 
 let enemys = [];
 console.log(enemys);
