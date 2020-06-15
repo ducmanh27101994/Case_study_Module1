@@ -1,6 +1,6 @@
-class Car {
+class Enemy {
     constructor(x,y,width,height) {
-        this.x = x;
+        this.x = Math.random() * 500;
         this.y = y;
         this.height = height;
         this.width = width;
@@ -9,7 +9,7 @@ class Car {
     draw(){
         let ctx = canvas.getContext('2d');
         let img = new Image();
-        img.src = 'car2.png';
+        img.src = 'stone.png';
         ctx.drawImage(img,this.x,this.y,this.width,this.height);
     }
     getX() {
@@ -36,10 +36,8 @@ class Car {
     setHeight(height) {
         this.height = height;
     }
+
 }
 
-let car = new Car(200,500,50,100);
-let x = car.getX();
-let y = car.getY();
-let width = car.getWidth();
-let height = car.getHeight();
+let enemy = new Enemy();
+

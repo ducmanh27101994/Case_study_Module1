@@ -33,13 +33,19 @@ function moveCar(evt) {
     }
 }
 
+function checkCrash(car,enemy) {
+    if ((enemy.x > car.x && enemy.x < car.x + car.width) || (enemy.x < car.x && enemy.x + car.width > car.x)) {
+        if ((enemy.y > car.y && enemy.y < car.y + 50) || (enemy.y < car.y && enemy.y + 50 > car.y)) {
+            return true;
+        }
+    }
+    return false
+}
 
 function checkWin(car, enemys) {
-    for (let i = 0; i < 5; i++) {
-        if ((enemys[i].x > car.x && enemys[i].x < car.x + 50) || (enemys[i].x < car.x && enemys[i].x + 50 > car.x)) {
-            if ((enemys[i].y > car.y && enemys[i].y < car.y + 50) || (enemys[i].y < car.y && enemys[i].y + 50 > car.y)) {
-                return true;
-            }
+    for (let i = 0; i < enemys.length; i++) {
+        if(checkCrash(car,enemys[i])){
+            return true;
         }
     }
     return false;
@@ -47,7 +53,8 @@ function checkWin(car, enemys) {
 
 
 function update() {
-    drawRect(car.x, car.y, car.width, car.height, car.color);
+
+    car.draw();
 
     if (move === "LEFT" && car.x > 0) {
         car.x = car.x - 25;
@@ -68,16 +75,16 @@ function update() {
         }
     }
 
-    drawRect(0, 0, 500, 600, "black");
+    drawRect(0, 0, 500, 600, "#4e555b");
 
-    drawRect(car.x, car.y, car.width, car.height, car.color);
+    car.draw();
 
     for (let i = 0; i < 5; i++) {
         drawRect(enemys[i].x, enemys[i].y, enemys[i].width, enemys[i].height, enemys[i].color);
     }
 
     if (checkWin(car, enemys)) {
-        clearInterval(game); //Kết thúc game tại thời điểm xảy ra va chạm
+        clearInterval(game);
         text1 = "GAME OVER"
         text2 = "Score: " + score;
         ctx.fillStyle = "while";
@@ -90,5 +97,6 @@ function update() {
 
 function start() {
     game = setInterval(update, 100);
+    document.getElementById("startGame").style.display = "none";
 }
 
