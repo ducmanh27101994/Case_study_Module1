@@ -20,7 +20,7 @@ function moveCar(evt) {
 
 function checkCrash(car, enemy) {
     if ((enemy.x > car.x && enemy.x < car.x + car.width) || (enemy.x < car.x && enemy.x + car.width > car.x)) {
-        if ((enemy.y > car.y && enemy.y < car.y + 50) || (enemy.y < car.y && enemy.y + 50 > car.y)) {
+        if ((enemy.y > car.y && enemy.y < car.y + car.height) || (enemy.y < car.y && enemy.y + enemy.height > car.y)) {
             return true;
         }
     }
