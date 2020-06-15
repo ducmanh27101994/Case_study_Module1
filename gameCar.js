@@ -6,13 +6,6 @@ let speed = 7;
 
 let enemys = [];
 
-
-function drawRect(x, y, width, height, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height);
-}
-
-
 document.addEventListener("keydown", moveCar);
 let move;
 
@@ -67,7 +60,7 @@ function update() {
         document.getElementById("score").innerHTML = "Score: " + score;
     }
 
-    drawRect(0, 0, 500, 600, "#4e555b");
+    backgroundImg.draw();
 
     car.draw();
 
