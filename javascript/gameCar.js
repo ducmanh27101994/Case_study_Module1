@@ -2,7 +2,7 @@ let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 let score = 0;
 
-let speed = 7;
+let speed = 8;
 
 let enemys = [];
 console.log(enemys);
@@ -42,10 +42,10 @@ function update() {
     car.draw();
 
     if (move === "LEFT" && car.x > 0) {
-        car.x = car.x - 45;
+        car.x = car.x - 50;
         move = null;
     } else if (move === "RIGHT" && car.x < 500) {
-        car.x = car.x + 45;
+        car.x = car.x + 50;
         move = null;
     }
 
