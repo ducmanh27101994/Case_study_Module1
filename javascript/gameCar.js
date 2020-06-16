@@ -44,7 +44,7 @@ function update() {
     if (move === "LEFT" && car.x > 0) {
         car.x = car.x - 50;
         move = null;
-    } else if (move === "RIGHT" && car.x < 500) {
+    } else if (move === "RIGHT" && car.x < 450) {
         car.x = car.x + 50;
         move = null;
     }
