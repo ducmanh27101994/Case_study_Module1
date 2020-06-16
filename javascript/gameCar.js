@@ -2,7 +2,7 @@ let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 let score = 0;
 
-let speed = 8;
+let speed = 6;
 
 let enemys = [];
 console.log(enemys);
@@ -52,7 +52,7 @@ function update() {
     for (let i = 0; i < enemys.length; i++) {
         if (enemys[i].y >= 600) {
             enemys[i].x = Math.random() * 450;
-            enemys[i].y = 50;
+            enemys[i].y = 100;
             score += 1
             speed += 0.3;
         } else {
